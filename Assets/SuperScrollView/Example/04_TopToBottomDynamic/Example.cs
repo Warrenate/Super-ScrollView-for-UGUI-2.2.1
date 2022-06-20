@@ -65,7 +65,7 @@ namespace Example_TopToBottomDynamic
 			int.TryParse( m_jumpToIndex, out jumpToIndex );
 			if ( GUILayout.Button( "特定の項目にジャンプ" ) )
 			{
-				m_view.MovePanelToItemIndex( jumpToIndex, 0 );
+				m_view.MovePanelToItemIndex( jumpToIndex-3, 0 );
 			}
 
 			if ( GUILayout.Button( "位置リセット" ) )
