@@ -40,7 +40,7 @@ namespace SuperScrollView
 
         void ShowItemPrefabDataList(LoopListView2 listView)
         {
-            EditorGUILayout.PropertyField(mItemPrefabDataList, mItemPrefabListContent);
+            EditorGUILayout.PropertyField(mItemPrefabDataList, mItemPrefabListContent,false);
             if (mItemPrefabDataList.isExpanded == false)
             {
                 return;
@@ -66,7 +66,7 @@ namespace SuperScrollView
                 SerializedProperty mItemPrefabPadding = itemData.FindPropertyRelative("mPadding");
                 SerializedProperty mItemStartPosOffset = itemData.FindPropertyRelative("mStartPosOffset");
                 EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.PropertyField(itemData);
+                EditorGUILayout.PropertyField(itemData,false);
                 if (GUILayout.Button("Remove"))
                 {
                     removeIndex = i;

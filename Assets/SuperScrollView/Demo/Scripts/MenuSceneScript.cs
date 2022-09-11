@@ -22,10 +22,12 @@ namespace SuperScrollView
         public Transform mButtonPanelTf;
         SceneNameInfo[] mSceneNameArray = new SceneNameInfo[]
         {
+            new SceneNameInfo("Staggered GridView1","StaggeredGridView_TopToBottom"),
+            new SceneNameInfo("Staggered GridView2","StaggeredGridView_LeftToRight"),
             new SceneNameInfo("Chat Message List","ChatMsgListViewDemo"),
             new SceneNameInfo("Horizontal Gallery","HorizontalGalleryDemo"),
             new SceneNameInfo("Vertical Gallery","VerticalGalleryDemo"),
-            new SceneNameInfo("GridView","GridViewDemo"),
+            new SceneNameInfo("GridView","GridView_TopLeftToBottomRight"),
             new SceneNameInfo("PageView","PageViewDemo"),
             new SceneNameInfo("TreeView","TreeViewDemo"),
             new SceneNameInfo("Spin Date Picker","SpinDatePickerDemo"),
@@ -34,13 +36,8 @@ namespace SuperScrollView
             new SceneNameInfo("Change Item Height","ChangeItemHeightDemo"),
             new SceneNameInfo("Pull Up To Load More","PullAndLoadMoreDemo"),
             new SceneNameInfo("Click Load More","ClickAndLoadMoreDemo"),
-            
             new SceneNameInfo("Select And Delete","DeleteItemDemo"),
-            new SceneNameInfo("Top To Bottom","TopToBottomDemo"),
-            new SceneNameInfo("Left To Right","LeftToRightDemo"),
             new SceneNameInfo("GridView Select Delete ","GridViewDeleteItemDemo"),
-            new SceneNameInfo("Bottom To Top","BottomToTopDemo"),
-            new SceneNameInfo("Right To Left","RightToLeftDemo"),
             new SceneNameInfo("Responsive GridView","ResponsiveGridViewDemo"),
             new SceneNameInfo("TreeView\nWith Children Indent","TreeViewWithChildrenIndentDemo"),
 
@@ -49,8 +46,15 @@ namespace SuperScrollView
         {
             CreateFpsDisplyObj();
             int count = mButtonPanelTf.childCount;
-            for(int i = 0;i< count;++i)
+            int sceneCount = mSceneNameArray.Length;
+            for (int i = 0;i< count;++i)
             {
+                if(i >= sceneCount)
+                {
+                    mButtonPanelTf.GetChild(i).gameObject.SetActive(false);
+                    continue;
+                }
+                mButtonPanelTf.GetChild(i).gameObject.SetActive(true);
                 SceneNameInfo info = mSceneNameArray[i];
                 Button button = mButtonPanelTf.GetChild(i).GetComponent<Button>();
                 button.onClick.AddListener(delegate ()
